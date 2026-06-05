@@ -100,64 +100,46 @@ export const api = {
   getFaultOverview: () =>
     request.get('/fault-record/overview'),
 
+  getFarmingHome: (greenhouseId) =>
+    request.get(`/mobile/farming/home/${greenhouseId}`),
+  getCurrentPrescription: (greenhouseId) =>
+    request.get(`/mobile/farming/prescriptions/current/${greenhouseId}`),
+
   getTaskList: (params) =>
-    request.get('/farming/task', { params }),
+    request.get('/mobile/farming/tasks', { params }),
   getTask: (id) =>
-    request.get(`/farming/task/${id}`),
-  getTaskByGreenhouse: (greenhouseId) =>
-    request.get(`/farming/task/greenhouse/${greenhouseId}`),
-  getTaskByGreenhouseAndStatus: (greenhouseId, status) =>
-    request.get(`/farming/task/greenhouse/${greenhouseId}/status/${status}`),
+    request.get(`/mobile/farming/tasks/${id}`),
   startTask: (id, executor) =>
-    request.post(`/farming/task/start/${id}`, null, { params: { executor } }),
+    request.post(`/mobile/farming/tasks/${id}/start`, null, { params: { executor } }),
   executeTaskByDevice: (id) =>
-    request.post(`/farming/task/device/${id}`),
-  submitTaskFeedback: (data) =>
-    request.post('/farming/task/feedback', data),
+    request.post(`/mobile/farming/tasks/${id}/execute`),
+  submitTaskFeedback: (id, data) =>
+    request.post(`/mobile/farming/tasks/${id}/feedback`, data),
   cancelTask: (id, operator) =>
-    request.post(`/farming/task/cancel/${id}`, null, { params: { operator } }),
+    request.post(`/mobile/farming/tasks/${id}/cancel`, null, { params: { operator } }),
 
   getPestList: (params) =>
-    request.get('/farming/pest', { params }),
+    request.get('/mobile/farming/pests', { params }),
   getPest: (id) =>
-    request.get(`/farming/pest/${id}`),
-  getPestByType: (pestType) =>
-    request.get(`/farming/pest/type/${pestType}`),
-  getPestListAll: () =>
-    request.get('/farming/pest/list'),
-
-  getIdentifyList: (params) =>
-    request.get('/farming/identify', { params }),
-  getIdentify: (id) =>
-    request.get(`/farming/identify/${id}`),
-  getIdentifyRecent: (greenhouseId, limit) =>
-    request.get(`/farming/identify/recent/${greenhouseId}`, { params: { limit } }),
+    request.get(`/mobile/farming/pests/${id}`),
   identifyPest: (data) =>
-    request.post('/farming/identify', data),
-  handleIdentify: (id, handler, handleResult) =>
-    request.put(`/farming/identify/${id}/handle`, null, { params: { handler, handleResult } }),
+    request.post('/mobile/farming/pests/identify', data),
+  getIdentifyRecords: (params) =>
+    request.get('/mobile/farming/pests/records', { params }),
 
+  getYieldTrend: (greenhouseId, days) =>
+    request.get(`/mobile/farming/yield/trend/${greenhouseId}`, { params: { days } }),
   getYieldList: (params) =>
-    request.get('/farming/yield', { params }),
-  getYield: (id) =>
-    request.get(`/farming/yield/${id}`),
-  getYieldByGreenhouse: (greenhouseId) =>
-    request.get(`/farming/yield/greenhouse/${greenhouseId}`),
-  getYieldAnalysis: (greenhouseId, varietyId) =>
-    request.get(`/farming/yield/analysis/${greenhouseId}/${varietyId}`),
+    request.get('/mobile/farming/yield', { params }),
   saveYield: (data) =>
-    request.post('/farming/yield', data),
+    request.post('/mobile/farming/yield', data),
 
   getLogList: (params) =>
-    request.get('/farming/log', { params }),
-  getLog: (id) =>
-    request.get(`/farming/log/${id}`),
-  getLogRecent: (greenhouseId, limit) =>
-    request.get(`/farming/log/recent/${greenhouseId}`, { params: { limit } }),
+    request.get('/mobile/farming/logs', { params }),
   getLogByTask: (taskId) =>
-    request.get(`/farming/log/task/${taskId}`),
+    request.get(`/mobile/farming/logs/task/${taskId}`),
   saveLog: (data) =>
-    request.post('/farming/log', data)
+    request.post('/mobile/farming/logs', data)
 }
 
 export default api

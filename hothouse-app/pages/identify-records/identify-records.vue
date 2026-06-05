@@ -161,7 +161,7 @@ export default {
         if (this.activeFilter !== null) {
           params.handleStatus = this.activeFilter
         }
-        const res = await api.getIdentifyList(params)
+        const res = await api.getIdentifyRecords(params)
         if (res.records) {
           this.recordList = this.page === 1 ? res.records : [...this.recordList, ...res.records]
           this.total = res.total
@@ -176,7 +176,7 @@ export default {
     },
     async loadPendingCount() {
       try {
-        const res = await api.getIdentifyList({
+        const res = await api.getIdentifyRecords({
           page: 1,
           size: 1,
           greenhouseId: this.greenhouseId,

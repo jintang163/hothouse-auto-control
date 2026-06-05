@@ -288,7 +288,7 @@ export default {
           actualDuration: Number(this.feedbackForm.actualDuration) || 0,
           actualUsage: Number(this.feedbackForm.actualUsage) || 0
         }
-        await api.submitTaskFeedback(data)
+        await api.submitTaskFeedback(this.taskId, data)
         uni.showToast({ title: '提交成功', icon: 'success' })
         this.showFeedback = false
         this.loadData()

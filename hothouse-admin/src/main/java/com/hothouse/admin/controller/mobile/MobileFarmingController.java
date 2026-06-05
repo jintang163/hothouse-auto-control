@@ -106,6 +106,11 @@ public class MobileFarmingController {
         return Result.success(farmingTaskService.submitTaskFeedback(dto));
     }
 
+    @PostMapping("/tasks/{id}/cancel")
+    public Result<Boolean> cancelTask(@PathVariable Long id, @RequestParam String operator) {
+        return Result.success(farmingTaskService.cancelTask(id, operator));
+    }
+
     @GetMapping("/logs")
     public Result<Page<FarmingLog>> getLogList(
             @RequestParam(defaultValue = "1") Integer page,
@@ -129,6 +134,14 @@ public class MobileFarmingController {
         }
         wrapper.orderByDesc(FarmingLog::getOperationTime);
         return Result.success(farmingLogService.page(new Page<>(page, size), wrapper));
+    }
+
+    @GetMapping("/logs/task/{taskId}")
+    public Result<List<FarmingLog>> getLogsByTask(@PathVariable Long taskId) {
+        LambdaQueryWrapper<FarmingLog> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(FarmingLog::getTaskId, taskId);
+        wrapper.orderByDesc(FarmingLog::getOperationTime);
+        return Result.success(farmingLogService.list(wrapper));
     }
 
     @PostMapping("/logs")
@@ -189,6 +202,23 @@ public class MobileFarmingController {
         }
         wrapper.orderByDesc(PestIdentification::getIdentifyTime);
         return Result.success(pestIdentificationService.page(new Page<>(page, size), wrapper));
+    }
+
+    @GetMapping("/yield")
+    public Result<Page<YieldRecord>> getYieldList(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(required = false) Long greenhouseId,
+            @RequestParam(required = false) Long varietyId) {
+        LambdaQueryWrapper<YieldRecord> wrapper = new LambdaQueryWrapper<>();
+        if (greenhouseId != null) {
+            wrapper.eq(YieldRecord::getGreenhouseId, greenhouseId);
+        }
+        if (varietyId != null) {
+            wrapper.eq(YieldRecord::getVarietyId, varietyId);
+        }
+        wrapper.orderByDesc(YieldRecord::getHarvestDate);
+        return Result.success(yieldRecordService.page(new Page<>(page, size), wrapper));
     }
 
     @GetMapping("/yield/trend/{greenhouseId}")

@@ -9,6 +9,7 @@ import com.hothouse.common.entity.farming.PrescriptionFertigation;
 import com.hothouse.common.entity.farming.PrescriptionOperation;
 import com.hothouse.common.enums.farming.ExecutionMethod;
 import com.hothouse.common.enums.farming.LogType;
+import com.hothouse.common.enums.farming.ParamType;
 import com.hothouse.common.enums.farming.TaskStatus;
 import com.hothouse.common.enums.farming.TaskType;
 import com.hothouse.common.enums.farming.TriggerSource;
@@ -62,13 +63,22 @@ public class FarmingTaskServiceImpl extends ServiceImpl<FarmingTaskMapper, Farmi
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean generateTaskByThreshold(Long greenhouseId, Long prescriptionId, String triggerReason,
-                                        String deviceCodes, BigDecimal deviationValue) {
-        log.info("Generate task by threshold, greenhouseId: {}, prescriptionId: {}, triggerReason: {}",
-                greenhouseId, prescriptionId, triggerReason);
+                                        String deviceCodes, BigDecimal deviationValue, ParamType paramType) {
+        log.info("Generate task by threshold, greenhouseId: {}, prescriptionId: {}, paramType: {}, triggerReason: {}",
+                greenhouseId, prescriptionId, paramType, triggerReason);
 
         FarmingPrescription prescription = farmingPrescriptionService.getById(prescriptionId);
         if (prescription == null) {
             log.error("Prescription not found, id: {}", prescriptionId);
+            return false;
+        }
+
+        LocalDateTime checkTime = LocalDateTime.now().minusMinutes(30);
+        FarmingTask existingTask = farmingTaskMapper.selectExistingEnvTask(
+                greenhouseId, prescriptionId, paramType.getCode(), checkTime);
+        if (existingTask != null) {
+            log.warn("Env adjust task already exists for greenhouse: {}, prescription: {}, paramType: {}, existingTaskId: {}",
+                    greenhouseId, prescriptionId, paramType, existingTask.getId());
             return false;
         }
 
@@ -86,6 +96,7 @@ public class FarmingTaskServiceImpl extends ServiceImpl<FarmingTaskMapper, Farmi
         task.setPriority(1);
         task.setPlanStartTime(LocalDateTime.now());
         task.setDeviationValue(deviationValue);
+        task.setParamType(paramType);
 
         boolean saved = super.save(task);
         if (saved) {

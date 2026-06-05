@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/prescription")
+@RequestMapping("/farming/prescription")
 @RequiredArgsConstructor
 public class FarmingPrescriptionController {
 

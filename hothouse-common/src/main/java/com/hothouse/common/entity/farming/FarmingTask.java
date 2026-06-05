@@ -3,6 +3,7 @@ package com.hothouse.common.entity.farming;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hothouse.common.entity.BaseEntity;
 import com.hothouse.common.enums.farming.ExecutionMethod;
+import com.hothouse.common.enums.farming.ParamType;
 import com.hothouse.common.enums.farming.TaskStatus;
 import com.hothouse.common.enums.farming.TaskType;
 import com.hothouse.common.enums.farming.TriggerSource;
@@ -62,4 +63,6 @@ public class FarmingTask extends BaseEntity {
     private String feedbackContent;
 
     private BigDecimal deviationValue;
+
+    private ParamType paramType;
 }

@@ -115,7 +115,7 @@ public class TaskGenerationEngine {
 
             boolean needsAdjustment = checkDeviation(target, currentValue);
             if (needsAdjustment) {
-                generateEnvAdjustmentTask(greenhouseId, prescription, target, currentValue);
+                generateEnvAdjustmentTask(greenhouseId, prescription, target, currentValue, target.getParamType());
             }
         }
     }
@@ -144,7 +144,8 @@ public class TaskGenerationEngine {
     }
 
     private void generateEnvAdjustmentTask(Long greenhouseId, FarmingPrescription prescription,
-                                           PrescriptionEnvTarget target, BigDecimal currentValue) {
+                                           PrescriptionEnvTarget target, BigDecimal currentValue,
+                                           ParamType paramType) {
         BigDecimal deviation = currentValue.subtract(target.getTargetValue() != null ? 
                 target.getTargetValue() : BigDecimal.ZERO);
         BigDecimal absDeviation = deviation.abs();
@@ -162,7 +163,7 @@ public class TaskGenerationEngine {
                 .orElse(null);
 
         taskService.generateTaskByThreshold(greenhouseId, prescription.getId(), 
-                triggerReason, deviceCodes, absDeviation);
+                triggerReason, deviceCodes, absDeviation, paramType);
     }
 
     private com.hothouse.common.enums.DeviceType getDeviceTypeByParam(ParamType paramType) {

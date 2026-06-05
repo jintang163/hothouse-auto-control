@@ -130,18 +130,69 @@
         </view>
       </view>
 
-      <view class="quick-actions">
-        <view class="action-item" @click="switchMode">
-          <text class="action-icon">🔄</text>
-          <text>切换模式</text>
+      <view class="farming-summary-card" v-if="farmingHomeData">
+        <view class="card-title">
+          <text class="card-icon">🌱</text>
+          <text>农事概览</text>
         </view>
-        <view class="action-item" @click="goToHistory">
-          <text class="action-icon">📊</text>
-          <text>历史数据</text>
+        <view class="farming-summary">
+          <view class="summary-item" @click="goToTask">
+            <view class="summary-value" :style="{ color: '#faad14' }">{{ farmingHomeData.todayTaskCount || 0 }}</view>
+            <view class="summary-label">今日任务</view>
+          </view>
+          <view class="summary-item" @click="goToIdentifyRecords">
+            <view class="summary-value" :style="{ color: '#ff4d4f' }">{{ farmingHomeData.pendingIdentifyCount || 0 }}</view>
+            <view class="summary-label">待处理识别</view>
+          </view>
+          <view class="summary-item" @click="goToYield">
+            <view class="summary-value" :style="{ color: '#52c41a' }">{{ getLatestYield() }}</view>
+            <view class="summary-label">最近产量</view>
+          </view>
         </view>
-        <view class="action-item" @click="goToInspect">
-          <text class="action-icon">📝</text>
-          <text>巡检记录</text>
+        <view class="batch-info" v-if="farmingHomeData.currentBatch">
+          <text class="batch-label">当前批次：</text>
+          <text class="batch-value">{{ farmingHomeData.currentBatch.batchCode }}</text>
+        </view>
+      </view>
+
+      <view class="farming-actions">
+        <view class="card-title">
+          <text class="card-icon">📋</text>
+          <text>农事操作</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-item" @click="switchMode">
+            <text class="action-icon">🔄</text>
+            <text class="action-text">切换模式</text>
+          </view>
+          <view class="action-item" @click="goToTask">
+            <text class="action-icon">📝</text>
+            <text class="action-text">我的任务</text>
+          </view>
+          <view class="action-item" @click="goToHistory">
+            <text class="action-icon">📊</text>
+            <text class="action-text">历史数据</text>
+          </view>
+          <view class="action-item" @click="goToPestIdentify">
+            <text class="action-icon">📷</text>
+            <text class="action-text">拍照识别</text>
+          </view>
+          <view class="action-item" @click="goToPest">
+            <text class="action-icon">🔍</text>
+            <text class="action-text">病虫害库</text>
+          </view>
+          <view class="action-item" @click="goToLog">
+            <text class="action-icon">📖</text>
+            <text class="action-text">农事日志</text>
+          </view>
+          <view class="action-item" @click="goToYield">
+            <text class="action-icon">📈</text>
+            <text class="action-text">产量上报</text>
+          </view>
+          <view class="action-item" @click="goToCurrentPrescription">
+            <text class="action-icon">�</text>
+            <text class="action-text">当前处方</text>
+          </view>
         </view>
       </view>
     </view>
@@ -167,7 +218,8 @@ export default {
       currentMode: 1,
       timer: null,
       ws: null,
-      needMaintenanceList: []
+      needMaintenanceList: [],
+      farmingHomeData: null
     }
   },
   computed: {
@@ -264,9 +316,30 @@ export default {
     async loadData() {
       try {
         this.realTimeData = await api.getRealTimeData(this.currentGreenhouseId)
+        this.loadFarmingHomeData()
       } catch (e) {
         console.error('Load data error', e)
       }
+    },
+    async loadFarmingHomeData() {
+      try {
+        this.farmingHomeData = await api.getFarmingHome(this.currentGreenhouseId)
+      } catch (e) {
+        console.error('Load farming home data error', e)
+        this.farmingHomeData = {
+          todayTaskCount: 0,
+          pendingIdentifyCount: 0,
+          yieldTrend: [],
+          currentBatch: null
+        }
+      }
+    },
+    getLatestYield() {
+      if (!this.farmingHomeData?.yieldTrend || this.farmingHomeData.yieldTrend.length === 0) {
+        return '0'
+      }
+      const latest = this.farmingHomeData.yieldTrend[this.farmingHomeData.yieldTrend.length - 1]
+      return latest?.yield || 0
     },
     connectWebSocket() {
       // #ifdef H5 || APP-PLUS
@@ -337,6 +410,47 @@ export default {
     },
     goToInspect() {
       uni.navigateTo({ url: '/pages/inspect/inspect' })
+    },
+    goToTask() {
+      uni.navigateTo({ url: '/pages/task/task' })
+    },
+    goToPestIdentify() {
+      uni.navigateTo({ url: '/pages/pest-identify/pest-identify?greenhouseId=' + this.currentGreenhouseId })
+    },
+    goToPest() {
+      uni.navigateTo({ url: '/pages/pest/pest' })
+    },
+    goToLog() {
+      uni.navigateTo({ url: '/pages/log/log?greenhouseId=' + this.currentGreenhouseId })
+    },
+    goToYield() {
+      uni.navigateTo({ url: '/pages/yield/yield?greenhouseId=' + this.currentGreenhouseId })
+    },
+    goToIdentifyRecords() {
+      uni.navigateTo({ url: '/pages/identify-records/identify-records?greenhouseId=' + this.currentGreenhouseId })
+    },
+    goToCurrentPrescription() {
+      uni.showModal({
+        title: '当前处方',
+        content: '正在加载当前处方信息...',
+        showCancel: false,
+        success: async () => {
+          try {
+            const prescription = await api.getCurrentPrescription(this.currentGreenhouseId)
+            if (prescription) {
+              uni.showModal({
+                title: prescription.prescriptionName,
+                content: `处方编码：${prescription.prescriptionCode}\n版本：${prescription.version}\n描述：${prescription.description || '暂无描述'}`,
+                showCancel: false
+              })
+            } else {
+              uni.showToast({ title: '暂无当前处方', icon: 'none' })
+            }
+          } catch (e) {
+            uni.showToast({ title: '加载处方失败', icon: 'none' })
+          }
+        }
+      })
     }
   }
 }
@@ -654,6 +768,90 @@ export default {
     text {
       font-size: 26rpx;
       color: #666;
+    }
+  }
+}
+
+.farming-summary-card, .farming-actions {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 24rpx;
+    
+    .card-icon {
+      margin-right: 12rpx;
+      font-size: 36rpx;
+    }
+  }
+}
+
+.farming-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 24rpx;
+  
+  .summary-item {
+    text-align: center;
+    
+    .summary-value {
+      font-size: 48rpx;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .summary-label {
+      font-size: 24rpx;
+      color: #999;
+      margin-top: 8rpx;
+    }
+  }
+}
+
+.batch-info {
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+  font-size: 26rpx;
+  
+  .batch-label {
+    color: #999;
+  }
+  
+  .batch-value {
+    color: #1890ff;
+    font-weight: bold;
+  }
+}
+
+.farming-actions {
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24rpx;
+    
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16rpx 0;
+      
+      .action-icon {
+        font-size: 44rpx;
+        margin-bottom: 8rpx;
+      }
+      
+      .action-text {
+        font-size: 24rpx;
+        color: #666;
+      }
     }
   }
 }

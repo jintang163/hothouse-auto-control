@@ -170,13 +170,15 @@ CREATE TABLE t_farming_task (
     usage_unit VARCHAR(20) COMMENT '用量单位',
     feedback_content TEXT COMMENT '执行反馈',
     deviation_value DECIMAL(10,2) COMMENT '偏差值',
+    param_type VARCHAR(50) COMMENT '参数类型 TEMP-温度 HUMIDITY-湿度 CO2-CO2浓度 LIGHT-光照 SOIL_MOISTURE-土壤湿度 SOIL_TEMP-土壤温度',
     create_time DATETIME COMMENT '创建时间',
     update_time DATETIME COMMENT '更新时间',
     deleted TINYINT DEFAULT 0 COMMENT '删除标记',
     INDEX idx_greenhouse_id (greenhouse_id),
     INDEX idx_prescription_id (prescription_id),
     INDEX idx_status (status),
-    INDEX idx_plan_time (plan_start_time)
+    INDEX idx_plan_time (plan_start_time),
+    INDEX idx_param_type (param_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='农事任务表';
 
 -- =========================================================
