@@ -1,0 +1,219 @@
+.prescription-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .header-left {
+      .title {
+        margin: 0 0 4px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .ant-statistic-content-value {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .filter-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .filter-form {
+      .ant-form-item {
+        margin-bottom: 0;
+
+        .ant-form-item-label {
+          label {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .toolbar-left {
+        .selected-info {
+          font-size: 14px;
+          color: #666;
+
+          strong {
+            color: #1890ff;
+            margin: 0 4px;
+          }
+        }
+      }
+
+      .toolbar-right {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
+    .prescription-code {
+      font-family: 'Courier New', monospace;
+      font-weight: 500;
+      color: #1890ff;
+    }
+
+    .ant-table {
+      .ant-table-tbody {
+        > tr {
+          &:hover {
+            background: #f5faff;
+          }
+        }
+      }
+    }
+  }
+
+  .edit-form {
+    .config-table {
+      margin-bottom: 16px;
+
+      .config-header {
+        display: flex;
+        background: #fafafa;
+        padding: 10px 12px;
+        border-radius: 4px 4px 0 0;
+        border: 1px solid #f0f0f0;
+        border-bottom: none;
+        font-weight: 500;
+        color: #666;
+        font-size: 13px;
+
+        .col {
+          padding: 0 8px;
+        }
+      }
+
+      .config-row {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #f0f0f0;
+        border-top: none;
+
+        &:last-of-type {
+          border-radius: 0 0 4px 4px;
+        }
+
+        .col {
+          padding: 0 8px;
+        }
+      }
+
+      .ant-btn-dashed {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .detail-content {
+    .ant-descriptions {
+      margin-bottom: 16px;
+
+      .ant-descriptions-item-label {
+        color: #666;
+        font-weight: 500;
+      }
+    }
+
+    .detail-tabs {
+      .ant-tabs-nav {
+        margin-bottom: 16px;
+      }
+
+      .ant-table {
+        .ant-table-thead {
+          > tr > th {
+            background: #fafafa;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .prescription-page {
+    .page-header {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-card {
+      .filter-form {
+        .ant-form-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .ant-form-item-label {
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .table-card {
+      .table-toolbar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+
+        .toolbar-right {
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    .edit-form {
+      .config-table {
+        .config-header,
+        .config-row {
+          flex-wrap: wrap;
+
+          .col {
+            width: 50% !important;
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}

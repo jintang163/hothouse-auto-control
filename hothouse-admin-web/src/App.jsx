@@ -8,6 +8,12 @@ import Alarm from '@/pages/Alarm'
 import History from '@/pages/History'
 import ControlLog from '@/pages/ControlLog'
 import DeviceMaintenance from '@/pages/DeviceMaintenance'
+import Prescription from '@/pages/Prescription'
+import FarmingTask from '@/pages/FarmingTask'
+import FarmingLog from '@/pages/FarmingLog'
+import PestDisease from '@/pages/PestDisease'
+import PestIdentify from '@/pages/PestIdentify'
+import YieldAnalysis from '@/pages/YieldAnalysis'
 import useStore from '@/store'
 
 function App() {
@@ -30,6 +36,12 @@ function App() {
         <Route path="history" element={<History />} />
         <Route path="control-log" element={<ControlLog />} />
         <Route path="maintenance" element={<DeviceMaintenance />} />
+        <Route path="prescription" element={<Prescription />} />
+        <Route path="farming-task" element={<FarmingTask />} />
+        <Route path="farming-log" element={<FarmingLog />} />
+        <Route path="pest-disease" element={<PestDisease />} />
+        <Route path="pest-identify" element={<PestIdentify />} />
+        <Route path="yield-analysis" element={<YieldAnalysis />} />
       </Route>
     </Routes>
   )

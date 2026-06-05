@@ -1,0 +1,280 @@
+.pest-disease-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .header-left {
+      .title {
+        margin: 0 0 4px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .ant-statistic-content-value {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .filter-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .filter-form {
+      .ant-form-item {
+        margin-bottom: 0;
+
+        .ant-form-item-label {
+          label {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .card-grid-wrapper {
+    border-radius: 8px;
+
+    .card-grid {
+      .pest-card {
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .pest-cover {
+          object-fit: cover;
+          height: 160px;
+        }
+
+        .pest-card-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+        }
+
+        .pest-name {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          margin: 0 0 4px 0;
+        }
+
+        .pest-alias {
+          font-size: 13px;
+          color: #999;
+          margin: 0 0 12px 0;
+        }
+
+        .pest-crops {
+          margin-bottom: 12px;
+
+          .crops-label {
+            font-size: 13px;
+            color: #666;
+            margin-right: 4px;
+          }
+        }
+
+        .pest-symptom {
+          font-size: 13px;
+          color: #666;
+          line-height: 1.6;
+          margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .ant-card-actions {
+          li {
+            margin: 0;
+
+            span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+
+              &:hover {
+                color: #1890ff;
+              }
+
+              &.danger {
+                &:hover {
+                  color: #ff4d4f;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
+  }
+
+  .detail-content {
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0f0f0;
+
+      .detail-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+      }
+    }
+
+    .detail-images {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .ant-descriptions {
+      margin-bottom: 16px;
+
+      .ant-descriptions-item-label {
+        color: #666;
+        font-weight: 500;
+        background: #fafafa;
+      }
+    }
+
+    .ant-divider {
+      margin: 20px 0 12px 0;
+
+      .ant-divider-inner-text {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .detail-text {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .control-methods {
+      .method-item {
+        margin-bottom: 16px;
+        padding: 16px;
+        background: #fafafa;
+        border-radius: 8px;
+
+        .method-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: #1890ff;
+          margin: 0 0 8px 0;
+        }
+
+        .method-content {
+          font-size: 14px;
+          color: #333;
+          line-height: 1.8;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .edit-form {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
+    }
+
+    .ant-form-item-label {
+      label {
+        font-weight: 500;
+      }
+    }
+
+    .ant-divider {
+      margin: 16px 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .pest-disease-page {
+    .page-header {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-card {
+      .filter-form {
+        .ant-form-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .ant-form-item-label {
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .detail-content {
+      .detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  }
+}

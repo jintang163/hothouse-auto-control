@@ -123,7 +123,111 @@ export const api = {
   getFaultDailyTrend: (startTime, endTime) =>
     request.get('/fault-record/stats/daily-trend', { params: { startTime, endTime } }),
   getHighFrequencyFaults: (startTime, endTime) =>
-    request.get('/fault-record/stats/high-frequency', { params: { startTime, endTime } })
+    request.get('/fault-record/stats/high-frequency', { params: { startTime, endTime } }),
+
+  getPrescriptionList: (params) =>
+    request.get('/farming/prescription', { params }),
+  getPrescriptionDetail: (id) =>
+    request.get(`/farming/prescription/${id}`),
+  savePrescription: (data) =>
+    request.post('/farming/prescription', data),
+  updatePrescription: (data) =>
+    request.put('/farming/prescription', data),
+  copyPrescription: (data) =>
+    request.post('/farming/prescription/copy', data),
+  publishPrescription: (id) =>
+    request.post(`/farming/prescription/${id}/publish`),
+  archivePrescription: (id) =>
+    request.post(`/farming/prescription/${id}/archive`),
+  createNewVersion: (id) =>
+    request.post(`/farming/prescription/${id}/new-version`),
+  deletePrescription: (id) =>
+    request.delete(`/farming/prescription/${id}`),
+  getCropVarietyList: () =>
+    request.get('/crop-variety/list'),
+  getGrowthStages: (varietyId) =>
+    request.get(`/crop-variety/${varietyId}/stages`),
+
+  getFarmingLogList: (params) =>
+    request.get('/farming/log', { params }),
+  getFarmingLog: (id) =>
+    request.get(`/farming/log/${id}`),
+  getFarmingLogRecent: (greenhouseId, limit) =>
+    request.get(`/farming/log/recent/${greenhouseId}`, { params: { limit } }),
+  addFarmingLog: (data) =>
+    request.post('/farming/log', data),
+  deleteFarmingLog: (id) =>
+    request.delete(`/farming/log/${id}`),
+
+  getPestDiseaseList: (params) =>
+    request.get('/farming/pest', { params }),
+  getPestDisease: (id) =>
+    request.get(`/farming/pest/${id}`),
+  getPestDiseaseByType: (pestType) =>
+    request.get(`/farming/pest/type/${pestType}`),
+  getPestDiseaseByCrop: (cropName) =>
+    request.get(`/farming/pest/crop/${cropName}`),
+  getPestDiseaseAll: () =>
+    request.get('/farming/pest/list'),
+  addPestDisease: (data) =>
+    request.post('/farming/pest', data),
+  updatePestDisease: (data) =>
+    request.put('/farming/pest', data),
+  deletePestDisease: (id) =>
+    request.delete(`/farming/pest/${id}`),
+
+  getPestIdentifyList: (params) =>
+    request.get('/farming/identify', { params }),
+  getPestIdentify: (id) =>
+    request.get(`/farming/identify/${id}`),
+  getPestIdentifyRecent: (greenhouseId, limit) =>
+    request.get(`/farming/identify/recent/${greenhouseId}`, { params: { limit } }),
+  getPestIdentifyPending: () =>
+    request.get('/farming/identify/pending'),
+  handlePestIdentify: (id, data) =>
+    request.put(`/farming/identify/${id}/handle`, null, { params: data }),
+  deletePestIdentify: (id) =>
+    request.delete(`/farming/identify/${id}`),
+
+  getYieldRecordList: (params) =>
+    request.get('/farming/yield', { params }),
+  getYieldRecord: (id) =>
+    request.get(`/farming/yield/${id}`),
+  getYieldRecordByGreenhouse: (greenhouseId) =>
+    request.get(`/farming/yield/greenhouse/${greenhouseId}`),
+  getYieldAnalysis: (greenhouseId, varietyId) =>
+    request.get(`/farming/yield/analysis/${greenhouseId}/${varietyId}`),
+  addYieldRecord: (data) =>
+    request.post('/farming/yield', data),
+  updateYieldRecord: (data) =>
+    request.put('/farming/yield', data),
+  deleteYieldRecord: (id) =>
+    request.delete(`/farming/yield/${id}`),
+
+  getTaskList: (params) =>
+    request.get('/farming/task', { params }),
+  getTaskDetail: (id) =>
+    request.get(`/farming/task/${id}`),
+  getTaskListByGreenhouse: (greenhouseId) =>
+    request.get(`/farming/task/greenhouse/${greenhouseId}`),
+  getTaskListByGreenhouseAndStatus: (greenhouseId, status) =>
+    request.get(`/farming/task/greenhouse/${greenhouseId}/status/${status}`),
+  getPendingTaskListByExecutor: (executor) =>
+    request.get(`/farming/task/pending/${executor}`),
+  createTask: (data) =>
+    request.post('/farming/task', data),
+  updateTask: (data) =>
+    request.put('/farming/task', data),
+  startTask: (id, executor) =>
+    request.post(`/farming/task/start/${id}`, null, { params: { executor } }),
+  executeTaskByDevice: (id) =>
+    request.post(`/farming/task/device/${id}`),
+  submitTaskFeedback: (data) =>
+    request.post('/farming/task/feedback', data),
+  cancelTask: (id, operator) =>
+    request.post(`/farming/task/cancel/${id}`, null, { params: { operator } }),
+  deleteTask: (id) =>
+    request.delete(`/farming/task/${id}`)
 }
 
 export default request

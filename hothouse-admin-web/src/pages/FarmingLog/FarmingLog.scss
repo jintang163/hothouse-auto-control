@@ -1,0 +1,213 @@
+.farming-log-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .header-left {
+      .title {
+        margin: 0 0 4px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .ant-statistic-content-value {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .filter-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .filter-form {
+      .ant-form-item {
+        margin-bottom: 0;
+
+        .ant-form-item-label {
+          label {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .timeline-card {
+    border-radius: 8px;
+
+    .timeline-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .toolbar-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .log-timeline {
+      padding-left: 20px;
+
+      .timeline-label {
+        min-width: 160px;
+        padding-right: 20px;
+
+        .time {
+          font-size: 13px;
+          color: #666;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+
+    .log-card {
+      margin-bottom: 8px;
+      border-radius: 8px;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .log-card-header {
+        margin-bottom: 8px;
+
+        .log-operator,
+        .log-greenhouse {
+          font-size: 13px;
+          color: #666;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+
+      .log-content {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+
+      .log-images {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+
+        .log-image {
+          border-radius: 4px;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.2s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .log-card-footer {
+        padding-top: 8px;
+        border-top: 1px solid #f0f0f0;
+        text-align: right;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+
+  .detail-content {
+    .ant-descriptions {
+      .ant-descriptions-item-label {
+        color: #666;
+        font-weight: 500;
+        background: #fafafa;
+      }
+    }
+
+    .detail-images {
+      margin-top: 20px;
+
+      .images-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 12px 0;
+      }
+    }
+  }
+
+  .add-form {
+    .ant-form-item-label {
+      label {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .farming-log-page {
+    .page-header {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-card {
+      .filter-form {
+        .ant-form-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .ant-form-item-label {
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .timeline-card {
+      .log-timeline {
+        .timeline-label {
+          min-width: 120px;
+        }
+      }
+    }
+  }
+}

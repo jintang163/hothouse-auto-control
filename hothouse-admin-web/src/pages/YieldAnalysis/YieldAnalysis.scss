@@ -1,0 +1,178 @@
+.yield-analysis-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .header-left {
+      .title {
+        margin: 0 0 4px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .ant-statistic-content {
+        .ant-statistic-content-value {
+          font-weight: 600;
+        }
+
+        .ant-statistic-content-suffix {
+          font-size: 14px;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  .charts-row {
+    margin-bottom: 16px;
+
+    .chart-card {
+      border-radius: 8px;
+      height: 100%;
+
+      .ant-card-head {
+        min-height: 48px;
+
+        .ant-card-head-title {
+          font-size: 15px;
+          font-weight: 600;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .filter-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .filter-form {
+      .ant-form-item {
+        margin-bottom: 0;
+
+        .ant-form-item-label {
+          label {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+
+    .ant-card-head {
+      min-height: 48px;
+
+      .ant-card-head-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .ant-table {
+      .code {
+        font-family: 'Courier New', monospace;
+        color: #1890ff;
+      }
+
+      .yield-value {
+        strong {
+          color: '#1890ff;
+          font-size: 16px;
+          margin-right: 4px;
+        }
+      }
+
+      .ant-table-tbody {
+        > tr {
+          &:hover {
+            background: #f5faff;
+          }
+        }
+      }
+    }
+  }
+
+  .add-form {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
+    }
+
+    .ant-form-item-label {
+      label {
+        font-weight: 500;
+      }
+    }
+
+    .ant-input-number {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .yield-analysis-page {
+    .page-header {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-card {
+      .filter-form {
+        .ant-form-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .ant-form-item-label {
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .charts-row {
+      .chart-card {
+        .ant-card-body {
+          padding: 12px;
+        }
+      }
+    }
+  }
+}

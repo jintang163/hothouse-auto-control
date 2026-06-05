@@ -11,7 +11,12 @@ import {
   UserOutlined,
   WifiOutlined,
   WifiOffOutlined,
-  ToolFilled
+  ToolFilled,
+  BookOutlined,
+  OrderedListOutlined,
+  BugOutlined,
+  ScanOutlined,
+  BarChartOutlined
 } from '@ant-design/icons'
 import useStore from '@/store'
 import { api } from '@/utils/request'
@@ -26,7 +31,20 @@ const menuItems = [
   { key: '/alarm', icon: <BellOutlined />, label: '告警中心' },
   { key: '/history', icon: <LineChartOutlined />, label: '历史数据' },
   { key: '/control-log', icon: <FileTextOutlined />, label: '操作日志' },
-  { key: '/maintenance', icon: <ToolFilled />, label: '设备运维' }
+  { key: '/maintenance', icon: <ToolFilled />, label: '设备运维' },
+  {
+    key: 'farming',
+    icon: <OrderedListOutlined />,
+    label: '农事管理',
+    children: [
+      { key: '/farming-task', icon: <OrderedListOutlined />, label: '任务管理' },
+      { key: '/prescription', icon: <BookOutlined />, label: '处方库管理' },
+      { key: '/farming-log', icon: <FileTextOutlined />, label: '农事日志' },
+      { key: '/pest-disease', icon: <BugOutlined />, label: '病虫害知识库' },
+      { key: '/pest-identify', icon: <ScanOutlined />, label: '识别记录' },
+      { key: '/yield-analysis', icon: <BarChartOutlined />, label: '产量分析' }
+    ]
+  }
 ]
 
 const userMenuItems = [

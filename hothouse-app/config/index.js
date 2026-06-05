@@ -38,3 +38,55 @@ export const controlModeMap = {
   1: { text: '自动', color: '#52c41a' },
   2: { text: '定时', color: '#1890ff' }
 }
+
+export const taskStatusMap = {
+  0: { text: '待执行', color: '#faad14' },
+  1: { text: '执行中', color: '#1890ff' },
+  2: { text: '已完成', color: '#52c41a' },
+  3: { text: '已取消', color: '#999' },
+  4: { text: '执行失败', color: '#ff4d4f' }
+}
+
+export const taskTypeMap = {
+  ENV_ADJUST: { text: '环境调节', color: '#1890ff' },
+  FERTIGATION: { text: '水肥作业', color: '#52c41a' },
+  OPERATION: { text: '农事操作', color: '#722ed1' }
+}
+
+export const triggerSourceMap = {
+  AUTO_THRESHOLD: { text: '阈值触发', color: '#fa8c16' },
+  AUTO_TIMED: { text: '定时触发', color: '#13c2c2' },
+  MANUAL: { text: '人工创建', color: '#722ed1' }
+}
+
+export const pestTypeMap = {
+  PEST: { text: '虫害', color: '#fa8c16' },
+  DISEASE: { text: '病害', color: '#f5222d' }
+}
+
+export const severityLevelMap = {
+  1: { text: '轻微', color: '#52c41a' },
+  2: { text: '中等', color: '#faad14' },
+  3: { text: '严重', color: '#fa8c16' },
+  4: { text: '极严重', color: '#ff4d4f' }
+}
+
+export const qualityLevelMap = {
+  1: { text: '特级', color: '#ffd700' },
+  2: { text: '一级', color: '#c0c0c0' },
+  3: { text: '二级', color: '#cd7f32' },
+  4: { text: '三级', color: '#999' }
+}
+
+export const logTypeMap = {
+  TASK: { text: '任务日志', color: '#1890ff' },
+  ENV: { text: '环境日志', color: '#52c41a' },
+  OPERATION: { text: '操作日志', color: '#722ed1' },
+  YIELD: { text: '产量日志', color: '#fa8c16' }
+}
+
+export const handleStatusMap = {
+  0: { text: '未处理', color: '#ff4d4f' },
+  1: { text: '处理中', color: '#1890ff' },
+  2: { text: '已处理', color: '#52c41a' }
+}
