@@ -1,0 +1,260 @@
+.dashboard {
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .header-left {
+      .title {
+        margin: 0 0 8px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .update-time {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .mode-switch {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .label {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .data-cards {
+    margin-bottom: 16px;
+
+    .env-card {
+      border-radius: 8px;
+      overflow: hidden;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ant-statistic-content {
+        margin: 12px 0;
+      }
+
+      .env-range {
+        font-size: 12px;
+        color: #999;
+        margin-bottom: 8px;
+      }
+
+      .env-status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+
+        &.normal {
+          background: #f6ffed;
+          color: #52c41a;
+        }
+
+        &.warning {
+          background: #fff7e6;
+          color: #fa8c16;
+        }
+
+        &.danger {
+          background: #fff1f0;
+          color: #ff4d4f;
+        }
+      }
+
+      &.temp-card {
+        border-left: 4px solid #ff4d4f;
+      }
+
+      &.humidity-card {
+        border-left: 4px solid #1890ff;
+      }
+
+      &.light-card {
+        border-left: 4px solid #faad14;
+      }
+
+      &.co2-card {
+        border-left: 4px solid #722ed1;
+      }
+    }
+  }
+
+  .chart-card {
+    border-radius: 8px;
+  }
+
+  .device-card {
+    border-radius: 8px;
+    height: 410px;
+
+    .ant-list {
+      height: calc(100% - 57px);
+      overflow-y: auto;
+    }
+
+    .device-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 !important;
+
+      .device-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+  }
+
+  .bottom-row {
+    margin-top: 0;
+  }
+
+  .control-card {
+    border-radius: 8px;
+
+    .control-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .control-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 8px;
+
+      .control-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #fff;
+
+        &.fan {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        &.wet {
+          background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        &.shade {
+          background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+      }
+
+      .control-info {
+        flex: 1;
+
+        .control-name {
+          font-size: 15px;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 4px;
+        }
+      }
+
+      .control-btns {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+
+  .alarm-card {
+    border-radius: 8px;
+
+    .ant-list {
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .alarm-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0 !important;
+
+      .alarm-level {
+        width: 4px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      .alarm-content {
+        flex: 1;
+        min-width: 0;
+
+        .alarm-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+
+          .alarm-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+          }
+        }
+
+        .alarm-desc {
+          font-size: 13px;
+          color: #666;
+          margin-bottom: 6px;
+          line-height: 1.4;
+        }
+
+        .alarm-meta {
+          display: flex;
+          gap: 16px;
+          font-size: 12px;
+          color: #999;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    .dashboard-header {
+      flex-direction: column;
+      gap: 16px;
+
+      .header-right {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

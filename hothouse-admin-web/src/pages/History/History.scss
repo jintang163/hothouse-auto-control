@@ -1,0 +1,150 @@
+.history-page {
+  .page-header {
+    margin-bottom: 20px;
+
+    .title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .anticon {
+        color: #1890ff;
+      }
+    }
+  }
+
+  .filter-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .filter-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .anticon {
+          color: #1890ff;
+        }
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+      overflow: hidden;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ant-statistic-content {
+        margin: 8px 0 12px 0;
+      }
+
+      .stat-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .stat-item {
+          font-size: 12px;
+          color: #999;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+      }
+
+      &.temp-stat {
+        border-left: 4px solid #ff4d4f;
+      }
+
+      &.humidity-stat {
+        border-left: 4px solid #1890ff;
+      }
+
+      &.light-stat {
+        border-left: 4px solid #faad14;
+      }
+
+      &.count-stat {
+        border-left: 4px solid #722ed1;
+      }
+    }
+  }
+
+  .chart-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .ant-card-head {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .ant-card-body {
+      padding: 16px 24px 36px;
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+
+    .ant-card-head {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .ant-table {
+      .ant-table-thead > tr > th {
+        background: #fafafa;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .ant-table-tbody > tr:hover > td {
+        background: #f5faff;
+      }
+    }
+
+    .ant-pagination {
+      margin-top: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .history-page {
+    .filter-card {
+      .filter-item {
+        .ant-select,
+        .ant-picker {
+          width: 100% !important;
+        }
+      }
+    }
+
+    .stats-row {
+      .stat-card {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

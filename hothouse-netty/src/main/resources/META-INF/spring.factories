@@ -1,0 +1,12 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.hothouse.netty.config.NettyAutoConfiguration,\
+com.hothouse.netty.server.IotNettyServer,\
+com.hothouse.netty.session.DeviceSessionManager,\
+com.hothouse.netty.session.DeviceSession,\
+com.hothouse.netty.processor.DefaultDataProcessor,\
+com.hothouse.netty.command.CommandService,\
+com.hothouse.netty.handler.DeviceConnectionHandler,\
+com.hothouse.netty.handler.DeviceAuthHandler,\
+com.hothouse.netty.handler.HeartbeatHandler,\
+com.hothouse.netty.handler.DataUploadHandler,\
+com.hothouse.netty.handler.ControlResponseHandler

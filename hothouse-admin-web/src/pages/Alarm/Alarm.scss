@@ -1,0 +1,154 @@
+.alarm-page {
+  .alarm-header {
+    margin-bottom: 20px;
+
+    .title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .stat-cards {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+      overflow: hidden;
+
+      .stat-title {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ant-statistic-content {
+        margin: 12px 0;
+      }
+
+      &.critical-card {
+        border-left: 4px solid #722ed1;
+      }
+
+      &.error-card {
+        border-left: 4px solid #ff4d4f;
+      }
+
+      &.warning-card {
+        border-left: 4px solid #faad14;
+      }
+    }
+  }
+
+  .search-card {
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    .ant-form-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+
+    .ant-tabs {
+      .ant-tabs-nav {
+        margin-bottom: 16px;
+
+        .ant-tabs-extra-content {
+          line-height: 40px;
+        }
+      }
+
+      .alarm-name {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .alarm-content {
+        color: #666;
+      }
+
+      .ant-table {
+        .ant-table-thead > tr > th {
+          background: #fafafa;
+          font-weight: 600;
+        }
+
+        .ant-table-tbody > tr:hover > td {
+          background: #f5f5f5;
+        }
+      }
+    }
+  }
+
+  .handle-alarm-info {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .label {
+        width: 80px;
+        flex-shrink: 0;
+        color: #999;
+      }
+
+      .value {
+        flex: 1;
+        color: #333;
+        word-break: break-all;
+      }
+    }
+  }
+
+  .handle-form {
+    .ant-form-item-label {
+      label {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .alarm-page {
+    .search-card {
+      .ant-form-inline {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+
+        .ant-form-item {
+          margin-right: 0;
+
+          .ant-select,
+          .ant-picker {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}

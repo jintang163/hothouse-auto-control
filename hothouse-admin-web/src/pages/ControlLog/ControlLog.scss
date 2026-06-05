@@ -1,0 +1,89 @@
+.control-log {
+  .search-card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    :global {
+      .ant-form-inline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .ant-form-item {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+
+      .title-icon {
+        color: #1890ff;
+        font-size: 18px;
+      }
+    }
+
+    :global {
+      .ant-table {
+        .ant-table-thead > tr > th {
+          background: #fafafa;
+          font-weight: 600;
+          color: #333;
+        }
+
+        .ant-table-tbody > tr:hover > td {
+          background: #f5faff;
+        }
+      }
+
+      .ant-pagination {
+        margin-top: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .control-log {
+    .search-card {
+      :global {
+        .ant-form-inline {
+          flex-direction: column;
+          align-items: stretch;
+
+          .ant-form-item {
+            margin-right: 0;
+            margin-bottom: 12px;
+
+            .ant-form-item-label {
+              min-width: 70px;
+            }
+
+            .ant-select,
+            .ant-picker {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+
+    .table-card {
+      :global {
+        .ant-table-wrapper {
+          overflow-x: auto;
+        }
+      }
+    }
+  }
+}
