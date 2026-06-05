@@ -139,7 +139,44 @@ export const api = {
   getLogByTask: (taskId) =>
     request.get(`/mobile/farming/logs/task/${taskId}`),
   saveLog: (data) =>
-    request.post('/mobile/farming/logs', data)
+    request.post('/mobile/farming/logs', data),
+
+  getIrrigationHome: (greenhouseId) =>
+    request.get(`/mobile/irrigation/home/${greenhouseId}`),
+  getIrrigationTaskList: (params) =>
+    request.get('/mobile/irrigation/tasks', { params }),
+  getIrrigationTask: (id) =>
+    request.get(`/mobile/irrigation/tasks/${id}`),
+  startIrrigationTask: (id, executor) =>
+    request.post(`/mobile/irrigation/tasks/${id}/start`, null, { params: { executor } }),
+  executeIrrigationTask: (id) =>
+    request.post(`/mobile/irrigation/tasks/${id}/execute`),
+  completeIrrigationTask: (id, data) =>
+    request.post(`/mobile/irrigation/tasks/${id}/complete`, data),
+  cancelIrrigationTask: (id, operator, reason) =>
+    request.post(`/mobile/irrigation/tasks/${id}/cancel`, null, { params: { operator, reason } }),
+  getIrrigationRealtime: (greenhouseId) =>
+    request.get(`/mobile/irrigation/realtime/${greenhouseId}`),
+  manualIrrigationControl: (data) =>
+    request.post('/mobile/irrigation/control', data),
+  getIrrigationRecordList: (params) =>
+    request.get('/mobile/irrigation/records', { params }),
+  getIrrigationTodayRecords: (greenhouseId) =>
+    request.get(`/mobile/irrigation/records/today/${greenhouseId}`),
+  getIrrigationDailyStats: (greenhouseId, date) =>
+    request.get(`/mobile/irrigation/statistics/daily/${greenhouseId}`, { params: { date } }),
+  getIrrigationMonthlyStats: (greenhouseId, month) =>
+    request.get(`/mobile/irrigation/statistics/monthly/${greenhouseId}`, { params: { month } }),
+  getIrrigationAlarmList: (params) =>
+    request.get('/mobile/irrigation/alarms', { params }),
+  handleIrrigationAlarm: (id, handler, handleResult) =>
+    request.post(`/mobile/irrigation/alarms/${id}/handle`, null, { params: { handler, handleResult } }),
+  getIrrigationPendingAlarms: (greenhouseId) =>
+    request.get(`/mobile/irrigation/alarms/pending/${greenhouseId}`),
+  getIrrigationTanks: (greenhouseId) =>
+    request.get(`/mobile/irrigation/tanks/${greenhouseId}`),
+  getCurrentIrrigationFormula: (greenhouseId) =>
+    request.get(`/mobile/irrigation/formulas/current/${greenhouseId}`)
 }
 
 export default api

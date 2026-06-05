@@ -197,3 +197,85 @@ export const executionMethodMap = {
   MANUAL: { text: '人工执行', color: '#1890ff' },
   AUTO: { text: '自动执行', color: '#52c41a' }
 }
+
+export const irrigationDeviceTypeMap = {
+  SOLENOID_VALVE: '电磁阀',
+  FERTILIZER_PUMP: '施肥泵',
+  ACID_PUMP: '酸泵',
+  WATER_METER: '水表',
+  EC_PH_SENSOR: 'ECpH传感器',
+  PRESSURE_SENSOR: '压力传感器',
+  LEVEL_SENSOR: '液位传感器'
+}
+
+export const irrigationTaskTypeMap = {
+  IRRIGATION: '清水灌溉',
+  FERTIGATION: '水肥一体',
+  ACID_ADJUST: '酸调节'
+}
+
+export const irrigationTaskStatusMap = {
+  0: { text: '待执行', status: 'default' },
+  1: { text: '执行中', status: 'processing' },
+  2: { text: '已完成', status: 'success' },
+  3: { text: '已取消', status: 'warning' },
+  4: { text: '执行失败', status: 'error' }
+}
+
+export const irrigationTriggerSourceMap = {
+  AUTO_TIMED: '定时触发',
+  AUTO_MOISTURE: '湿度触发',
+  MANUAL: '手动触发'
+}
+
+export const irrigationAlarmTypeMap = {
+  LOW_LEVEL: '液位低',
+  LOW_PRESSURE: '水压低',
+  MOISTURE_NOT_RISE: '灌后湿度未升',
+  HIGH_TEMP: '高温暂停',
+  DEVICE_FAULT: '设备故障'
+}
+
+export const irrigationAlarmLevelMap = {
+  1: { text: '提示', color: 'blue' },
+  2: { text: '警告', color: 'orange' },
+  3: { text: '严重', color: 'red' }
+}
+
+export const irrigationRecordTypeMap = {
+  IRRIGATION: '灌溉记录',
+  FERTIGATION: '水肥记录'
+}
+
+export const tankTypeMap = {
+  WATER: '水源',
+  FERTILIZER_A: 'A肥',
+  FERTILIZER_B: 'B肥',
+  ACID: '酸液'
+}
+
+export const growthStageList = [
+  { id: 1, name: '播种期' },
+  { id: 2, name: '幼苗期' },
+  { id: 3, name: '生长期' },
+  { id: 4, name: '开花期' },
+  { id: 5, name: '结果期' },
+  { id: 6, name: '成熟期' }
+]
+
+export const irrigationFormulaStatusMap = {
+  0: { text: '停用', color: '#999' },
+  1: { text: '启用', color: '#52c41a' }
+}
+
+export const irrigationDeviceStatusMap = {
+  0: { text: '离线', color: '#999' },
+  1: { text: '在线', color: '#52c41a' },
+  2: { text: '故障', color: '#ff4d4f' }
+}
+
+export const irrigationAlarmStatusMap = {
+  0: { text: '待处理', color: '#ff4d4f' },
+  1: { text: '处理中', color: '#faad14' },
+  2: { text: '已处理', color: '#52c41a' }
+}

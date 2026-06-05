@@ -227,7 +227,81 @@ export const api = {
   cancelTask: (id, operator) =>
     request.post(`/farming/task/cancel/${id}`, null, { params: { operator } }),
   deleteTask: (id) =>
-    request.delete(`/farming/task/${id}`)
+    request.delete(`/farming/task/${id}`),
+
+  getIrrigationFormulaList: (params) =>
+    request.get('/irrigation/formula', { params }),
+  getIrrigationFormula: (id) =>
+    request.get(`/irrigation/formula/${id}`),
+  saveIrrigationFormula: (data) =>
+    request.post('/irrigation/formula', data),
+  updateIrrigationFormula: (data) =>
+    request.put('/irrigation/formula', data),
+  deleteIrrigationFormula: (id) =>
+    request.delete(`/irrigation/formula/${id}`),
+  enableIrrigationFormula: (id) =>
+    request.put(`/irrigation/formula/${id}/enable`),
+  disableIrrigationFormula: (id) =>
+    request.put(`/irrigation/formula/${id}/disable`),
+
+  getIrrigationDeviceList: (params) =>
+    request.get('/irrigation/device', { params }),
+  getIrrigationDevice: (id) =>
+    request.get(`/irrigation/device/${id}`),
+  saveIrrigationDevice: (data) =>
+    request.post('/irrigation/device', data),
+  updateIrrigationDevice: (data) =>
+    request.put('/irrigation/device', data),
+  deleteIrrigationDevice: (id) =>
+    request.delete(`/irrigation/device/${id}`),
+
+  getIrrigationTaskList: (params) =>
+    request.get('/irrigation/task', { params }),
+  getIrrigationTask: (id) =>
+    request.get(`/irrigation/task/${id}`),
+  createIrrigationTask: (data) =>
+    request.post('/irrigation/task', data),
+  startIrrigationTask: (id) =>
+    request.post(`/irrigation/task/${id}/start`),
+  executeIrrigationTask: (id) =>
+    request.post(`/irrigation/task/${id}/execute`),
+  completeIrrigationTask: (id) =>
+    request.post(`/irrigation/task/${id}/complete`),
+  cancelIrrigationTask: (id) =>
+    request.post(`/irrigation/task/${id}/cancel`),
+  manualIrrigationControl: (data) =>
+    request.post('/irrigation/task/manual', data),
+
+  getIrrigationRecordList: (params) =>
+    request.get('/irrigation/record', { params }),
+  getIrrigationRecord: (id) =>
+    request.get(`/irrigation/record/${id}`),
+  getIrrigationDailyStatistics: (params) =>
+    request.get('/irrigation/record/daily', { params }),
+  getIrrigationMonthlyStatistics: (params) =>
+    request.get('/irrigation/record/monthly', { params }),
+
+  getIrrigationAlarmList: (params) =>
+    request.get('/irrigation/alarm', { params }),
+  getIrrigationAlarm: (id) =>
+    request.get(`/irrigation/alarm/${id}`),
+  handleIrrigationAlarm: (id, data) =>
+    request.put(`/irrigation/alarm/${id}/handle`, data),
+
+  getFertilizerTankList: (params) =>
+    request.get('/irrigation/tank', { params }),
+  getFertilizerTank: (id) =>
+    request.get(`/irrigation/tank/${id}`),
+  saveFertilizerTank: (data) =>
+    request.post('/irrigation/tank', data),
+  updateFertilizerTank: (data) =>
+    request.put('/irrigation/tank', data),
+  deleteFertilizerTank: (id) =>
+    request.delete(`/irrigation/tank/${id}`),
+  fillFertilizerTank: (id, data) =>
+    request.post(`/irrigation/tank/${id}/fill`, data),
+  getTankLevel: (id) =>
+    request.get(`/irrigation/tank/${id}/level`)
 }
 
 export default request

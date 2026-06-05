@@ -189,8 +189,12 @@
             <text class="action-icon">📈</text>
             <text class="action-text">产量上报</text>
           </view>
+          <view class="action-item" @click="goToIrrigation">
+            <text class="action-icon">💧</text>
+            <text class="action-text">智能灌溉</text>
+          </view>
           <view class="action-item" @click="goToCurrentPrescription">
-            <text class="action-icon">�</text>
+            <text class="action-icon">📋</text>
             <text class="action-text">当前处方</text>
           </view>
         </view>
@@ -428,6 +432,9 @@ export default {
     },
     goToIdentifyRecords() {
       uni.navigateTo({ url: '/pages/identify-records/identify-records?greenhouseId=' + this.currentGreenhouseId })
+    },
+    goToIrrigation() {
+      uni.navigateTo({ url: '/pages/irrigation/index' })
     },
     goToCurrentPrescription() {
       uni.showModal({

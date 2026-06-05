@@ -16,7 +16,13 @@ import {
   OrderedListOutlined,
   BugOutlined,
   ScanOutlined,
-  BarChartOutlined
+  BarChartOutlined,
+  ThunderboltOutlined,
+  ExperimentOutlined,
+  DatabaseOutlined,
+  ScheduleOutlined,
+  DropOutlined,
+  AlertOutlined
 } from '@ant-design/icons'
 import useStore from '@/store'
 import { api } from '@/utils/request'
@@ -43,6 +49,19 @@ const menuItems = [
       { key: '/pest-disease', icon: <BugOutlined />, label: '病虫害知识库' },
       { key: '/pest-identify', icon: <ScanOutlined />, label: '识别记录' },
       { key: '/yield-analysis', icon: <BarChartOutlined />, label: '产量分析' }
+    ]
+  },
+  {
+    key: 'irrigation',
+    icon: <ThunderboltOutlined />,
+    label: '智能灌溉',
+    children: [
+      { key: '/irrigation/formula', icon: <ExperimentOutlined />, label: '配方管理' },
+      { key: '/irrigation/device', icon: <ToolOutlined />, label: '设备管理' },
+      { key: '/irrigation/task', icon: <ScheduleOutlined />, label: '任务管理' },
+      { key: '/irrigation/record', icon: <FileTextOutlined />, label: '记录管理' },
+      { key: '/irrigation/alarm', icon: <AlertOutlined />, label: '告警管理' },
+      { key: '/irrigation/tank', icon: <DatabaseOutlined />, label: '储罐管理' }
     ]
   }
 ]

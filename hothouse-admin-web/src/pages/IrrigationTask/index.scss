@@ -1,0 +1,105 @@
+.irrigation-task-page {
+  padding: 16px;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .header-left {
+      .title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #262626;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #8c8c8c;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+      .stat-title {
+        font-size: 14px;
+        color: #595959;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+  }
+
+  .filter-card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    .filter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+
+  .table-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .selected-info {
+        font-size: 14px;
+        color: #595959;
+
+        strong {
+          color: #1890ff;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .task-code {
+    font-family: 'Courier New', monospace;
+    color: #1890ff;
+    font-weight: 500;
+  }
+
+  .plan-time {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .detail-content {
+    .ant-descriptions-title {
+      font-weight: 600;
+    }
+
+    .device-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      .device-tag {
+        font-size: 13px;
+        padding: 4px 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,210 @@
+.fertilizer-tank-page {
+  padding: 16px;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .header-left {
+      .title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #262626;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #8c8c8c;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .stats-row {
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+      .stat-title {
+        font-size: 14px;
+        color: #595959;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+  }
+
+  .tank-grid {
+    .tank-card {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      &.tank-warning {
+        border: 1px solid #ff4d4f;
+        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+      }
+
+      .ant-card-body {
+        padding: 0;
+      }
+
+      .tank-header {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+
+        .tank-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 12px;
+        }
+
+        .tank-info {
+          flex: 1;
+          overflow: hidden;
+
+          .tank-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .tank-code {
+            font-size: 12px;
+            color: #8c8c8c;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 4px;
+          }
+
+          .tank-type-tag {
+            margin-right: 0;
+          }
+        }
+
+        .status-tag {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+        }
+      }
+
+      .tank-body {
+        padding: 16px;
+
+        .tank-progress {
+          margin-bottom: 16px;
+
+          .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            font-size: 13px;
+
+            .current-level {
+              color: #262626;
+              font-weight: 500;
+            }
+
+            .usage-rate {
+              font-weight: 600;
+            }
+          }
+        }
+
+        .tank-details {
+          .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .label {
+              color: #8c8c8c;
+            }
+
+            .value {
+              color: #262626;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      .tank-footer {
+        padding: 0 16px 16px;
+      }
+
+      .ant-card-actions {
+        border-top: 1px solid #f0f0f0;
+        background: #fafafa;
+
+        > li {
+          margin: 0;
+          padding: 0;
+        }
+
+        > li:not(:last-child) {
+          border-right: 1px solid #f0f0f0;
+        }
+      }
+    }
+  }
+
+  .detail-content {
+    .detail-header {
+      h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+
+    .ant-descriptions-title {
+      font-weight: 600;
+    }
+  }
+
+  .fill-content {
+    .fill-info {
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .edit-form {
+    .ant-form-item-label {
+      font-weight: 500;
+    }
+  }
+}

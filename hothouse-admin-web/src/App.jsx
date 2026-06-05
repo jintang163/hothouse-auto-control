@@ -14,6 +14,12 @@ import FarmingLog from '@/pages/FarmingLog'
 import PestDisease from '@/pages/PestDisease'
 import PestIdentify from '@/pages/PestIdentify'
 import YieldAnalysis from '@/pages/YieldAnalysis'
+import IrrigationFormula from '@/pages/IrrigationFormula'
+import IrrigationDevice from '@/pages/IrrigationDevice'
+import IrrigationTask from '@/pages/IrrigationTask'
+import IrrigationRecord from '@/pages/IrrigationRecord'
+import IrrigationAlarm from '@/pages/IrrigationAlarm'
+import FertilizerTank from '@/pages/FertilizerTank'
 import useStore from '@/store'
 
 function App() {
@@ -42,6 +48,12 @@ function App() {
         <Route path="pest-disease" element={<PestDisease />} />
         <Route path="pest-identify" element={<PestIdentify />} />
         <Route path="yield-analysis" element={<YieldAnalysis />} />
+        <Route path="irrigation/formula" element={<IrrigationFormula />} />
+        <Route path="irrigation/device" element={<IrrigationDevice />} />
+        <Route path="irrigation/task" element={<IrrigationTask />} />
+        <Route path="irrigation/record" element={<IrrigationRecord />} />
+        <Route path="irrigation/alarm" element={<IrrigationAlarm />} />
+        <Route path="irrigation/tank" element={<FertilizerTank />} />
       </Route>
     </Routes>
   )

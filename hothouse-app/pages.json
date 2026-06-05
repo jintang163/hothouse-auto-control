@@ -101,6 +101,48 @@
         "enablePullDownRefresh": true,
         "onReachBottomDistance": 50
       }
+    },
+    {
+      "path": "pages/irrigation/index",
+      "style": {
+        "navigationBarTitleText": "智能灌溉",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/irrigation-task/task",
+      "style": {
+        "navigationBarTitleText": "灌溉任务",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 50
+      }
+    },
+    {
+      "path": "pages/irrigation-task/task-detail",
+      "style": {
+        "navigationBarTitleText": "任务详情"
+      }
+    },
+    {
+      "path": "pages/irrigation-control/control",
+      "style": {
+        "navigationBarTitleText": "手动控制"
+      }
+    },
+    {
+      "path": "pages/irrigation-record/record",
+      "style": {
+        "navigationBarTitleText": "灌溉记录",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/irrigation-alarm/alarm",
+      "style": {
+        "navigationBarTitleText": "灌溉告警",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 50
+      }
     }
   ],
   "globalStyle": {
